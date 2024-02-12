@@ -128,7 +128,7 @@ extern const int   piMemorySize    [ 8] ;
 
 // Threads
 
-#define	PI_THREAD(X)	void *X (UNU void *dummy)
+#define	PI_THREAD(X)	void *X (void *arg)
 
 // Failure modes
 
@@ -245,11 +245,11 @@ extern          void digitalWriteByte2   (int value) ;
 //	(Also Pi hardware specific)
 
 extern int  waitForInterrupt    (int pin, int mS) ;
-extern int  wiringPiISR         (int pin, int mode, void (*function)(void)) ;
+extern int  wiringPiISR         (int pin, int mode, void (*function)(void *arg), void *arg) ;
 
 // Threads
 
-extern int  piThreadCreate      (void *(*fn)(void *)) ;
+extern int  piThreadCreate      (void *(*fn)(void *), void *arg) ;
 extern void piLock              (int key) ;
 extern void piUnlock            (int key) ;
 

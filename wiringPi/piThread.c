@@ -36,11 +36,11 @@ static pthread_mutex_t piMutexes [4] ;
  *********************************************************************************
  */
 
-int piThreadCreate (void *(*fn)(void *))
+int piThreadCreate (void *(*fn)(void *), void *arg)
 {
   pthread_t myThread ;
 
-  return pthread_create (&myThread, NULL, fn, NULL) ;
+  return pthread_create (&myThread, NULL, fn, arg) ;
 }
 
 /*
